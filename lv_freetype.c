@@ -214,7 +214,7 @@ int lv_freetype_init(uint8_t max_faces)
 * @param font_size the height of font
 * @return FT_Error
 */
-int lv_freetype_font_init(lv_font_t * font, const char * font_path, uint16_t font_size)
+int lv_freetype_font_init(lv_font_t * font, const uint8_t * font_addr, uint64_t font_len, uint16_t font_size)
 {
     FT_Error error;
 
@@ -224,9 +224,9 @@ int lv_freetype_font_init(lv_font_t * font, const char * font_path, uint16_t fon
 
     dsc->font_size = font_size;
 
-    error = FT_New_Face(library, font_path, 0, &dsc->face);
+    error = FT_New_Memory_Face(library, font_addr, font_len, 0, &dsc->face);
     if ( error ) {
-		printf("Error in FT_New_Face: %d\n", error);
+		printf("Error in FT_New_Memory_Face: %d\n", error);
 		return error;
 	}
     error = FT_Set_Pixel_Sizes(dsc->face, 0,font_size);
