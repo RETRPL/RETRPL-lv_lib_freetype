@@ -12,7 +12,7 @@ extern "C" {
 /*********************
  *      INCLUDES
  *********************/
-#include "lvgl/lvgl.h"
+#include "lvgl.h"
 #include "ft2build.h"
 #include FT_FREETYPE_H
 #include FT_GLYPH_H
